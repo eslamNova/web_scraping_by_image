@@ -125,5 +125,5 @@ class scraper(object):
 		    	w.writerow([name, price, link])
 
 	def get_files(self):
-		print('running')
+		print('getting your files')
 		return file_list

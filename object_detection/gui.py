@@ -7,6 +7,7 @@ import tkinter.ttk as ttk
 import _support
 import PIL
 from PIL import Image ,ImageTk
+import os
 
 import model_1 as model
 
@@ -113,7 +114,10 @@ def button_scrap_command():
                 scrap.souqScrap(item)
             if(_support.che41.get()):
                 scrap.aliExpressScrap(item)
-
+            final_list = scrap.get_files()
+            print(final_list)
+            for file in final_list:
+                top.Listbox1.insert(END, file)
         print('DONE')
 
     else:            #text
@@ -126,9 +130,18 @@ def button_scrap_command():
             scrap.souqScrap(s)
         if(_support.che41.get()):
             scrap.aliExpressScrap(s)
+        final_list = scrap.get_files()
+        #final_list = ['islam','alien','moon'] #for testing :)
+        print(final_list)
+        for file in final_list:
+            top.Listbox1.insert(END, file)
         print('DONE')
     
 
+def Listbox_onselect(self):
+    path_t = top.Listbox1.get(ANCHOR)
+    print(path_t)  
+    os.startfile(path_t)
 
 
 
@@ -315,7 +328,9 @@ class Web_Scraper_Manager(object):
         self.Listbox1.configure(font=font11)
         self.Listbox1.configure(foreground="#000000")
         self.Listbox1.configure(width=774)
-        #self.Listbox1.configure(StringVar = _support.list_text)
+        self.Listbox1.config( selectmode = SINGLE )
+        self.Listbox1.bind('<<ListboxSelect>>', Listbox_onselect)
+
 
         self.Button2 = Button(top)
         self.Button2.place(relx=0.73, rely=0.92, height=48, width=188)
