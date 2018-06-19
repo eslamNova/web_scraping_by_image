@@ -19,7 +19,7 @@ class scraper(object):
 		global file_list
 		path ='C:/Users/islam/Desktop/web_scraping_by_image/chromedriver_win32/chromedriver.exe'
 		save_path = 'C:/Users/islam/Desktop/web_scraping_by_image/output'
-		browser = webdriver.Chrome(executable_path = path )
+		browser = webdriver.Chrome(executable_path = path , chrome_options= chrome_options )
 
 	def newEggScrap(self, key_word):
 	#NewEgg SCRAPING

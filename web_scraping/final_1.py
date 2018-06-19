@@ -11,7 +11,6 @@ chrome_options = Options()
 chrome_options.add_argument("--headless")			#run in hidden mode
 path ='C:/Users/islam/Desktop/web_scraping_by_image/chromedriver_win32/chromedriver.exe'
 browser = webdriver.Chrome(executable_path = path , chrome_options= chrome_options)
-d = dict()
 
 def newEggScrap(key_word):
 	#NewEgg SCRAPING
@@ -30,14 +29,9 @@ def newEggScrap(key_word):
 
 	print("***************** scraping started *****************\n")
 	for link, price in zip(link_list[5:15], price_total_list[5:15]):  #to define limits
-	    print("product name  : ",link.text)
-	    print("product price : ",price.text)
-	    print("product link  : ",link.get_attribute("href"))
-    
 	    name_list.append(link.text)
 	    price_list.append(price.text)
 	    link_list2.append(link.get_attribute("href"))
-	    d = { name:{price:link} for name, price, link in zip(name_list[0:10],price_list[0:10], link_list2[0:10])}
 	    print()
 
 	#CSV Extrating
@@ -48,7 +42,6 @@ def newEggScrap(key_word):
 	    	w.writerow([name, price, link])
 
 
-	print(d)
 
 
 def souqScrap(key_word):
@@ -68,14 +61,9 @@ def souqScrap(key_word):
 
 	print("***************** scraping started *****************\n")
 	for link, price in zip(link_list[0:10], price_total_list[0:10]):  #to define limits
-	    print("product name  : ",link.text)
-	    print("product price : ",price.text)
-	    print("product link  : ",link.get_attribute("href"))
-    
 	    name_list.append(link.text)
 	    price_list.append(price.text)
 	    link_list2.append(link.get_attribute("href"))
-	    d = { name:{price:link} for name, price, link in zip(name_list[0:10],price_list[0:10], link_list2[0:10])}
 	    print()
 
 	#CSV Extrating
@@ -86,7 +74,6 @@ def souqScrap(key_word):
 	    	w.writerow([name, price, link])
 
 
-	print(d)
 
 def aliExpressScrap(key_word):
 	#AliExpress SCRAPING
@@ -106,14 +93,9 @@ def aliExpressScrap(key_word):
 
 	print("***************** scraping started *****************\n")
 	for link, price in zip(link_list[0:10], price_total_list[0:10]):  #to define limits
-	    print("product name  : ",link.text)
-	    print("product price : ",price.text)
-	    print("product link  : ",link.get_attribute("href"))
-
 	    name_list.append(link.text)
 	    price_list.append(price.text)
 	    link_list2.append(link.get_attribute("href"))
-	    d = { name:{price:link} for name, price, link in zip(name_list[0:10],price_list[0:10], link_list2[0:10])}
 	    print()
 
 	#CSV Extrating
@@ -124,7 +106,6 @@ def aliExpressScrap(key_word):
 	    	w.writerow([name, price, link])
 
 
-	print(d)
 #################################################
 #fhand = open('C:/Users/islam/Desktop/web_scraping_by_image/object_detection/objects.txt')
 
