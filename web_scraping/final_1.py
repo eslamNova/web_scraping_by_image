@@ -10,7 +10,7 @@ import sys
 chrome_options = Options()
 chrome_options.add_argument("--headless")			#run in hidden mode
 path ='C:/Users/islam/Desktop/web_scraping_by_image/chromedriver_win32/chromedriver.exe'
-browser = webdriver.Chrome(executable_path = path)
+browser = webdriver.Chrome(executable_path = path , chrome_options= chrome_options)
 d = dict()
 
 def newEggScrap(key_word):
@@ -126,15 +126,14 @@ def aliExpressScrap(key_word):
 
 	print(d)
 #################################################
-fhand = open('C:/Users/islam/Desktop/web_scraping_by_image/object_detection/objects.txt')
+#fhand = open('C:/Users/islam/Desktop/web_scraping_by_image/object_detection/objects.txt')
 
-print('heeeere')
 
-for line in fhand:
-	print(line)
-	line = line.rstrip()
-	souqScrap(line)
-	aliExpressScrap(line)
+#for line in fhand:
+	#print(line)
+	#line = line.rstrip()
+	#souqScrap(line)
+	#aliExpressScrap(line)
 	#newEggScrap(line)
 
 #print(list_g)
