@@ -12,7 +12,7 @@ import os
 import model_1 as model
 
 sys.path.append("C:/Users/islam/Desktop/web_scraping_by_image/web_scraping")   
-from final_2 import scraper
+from Scraper import scraper
 # import commands
 top = None
 image_path = ""

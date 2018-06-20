@@ -8,19 +8,21 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 Window 10
-
 Python 3.6
-
-You need to have[tensorflow](https://www.tensorflow.org/install/install_windows) and [selenium]( http://selenium-python.readthedocs.io/installation.html) libraries installed on your machine
+You need to have tensorflow, selenium libraries installed on your machine
+```
+Give examples
+```
 
 ### Installing
 
-First, clone or download ZIP the software
+A step by step series of examples that tell you how to get a development env running
+
+Say what the step will be
 
 ```
-clone https://github.com/eslamNova/web_scraping_by_image.git
+Give the example
 ```
-
 
 And repeat
 
