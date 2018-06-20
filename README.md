@@ -11,7 +11,9 @@ Window 10
 
 Python 3.6
 
-You need to have[tensorflow](https://www.tensorflow.org/install/install_windows) and [selenium]( http://selenium-python.readthedocs.io/installation.html) libraries installed on your machine
+You need to have [tensorflow](https://www.tensorflow.org/install/install_windows) and [selenium]( http://selenium-python.readthedocs.io/installation.html) libraries installed on your machine
+
+We recommend using [sublime-text]( https://www.sublimetext.com/) for editing code
 
 ### Installing
 
@@ -21,33 +23,38 @@ First, clone or download ZIP the software
 clone https://github.com/eslamNova/web_scraping_by_image.git
 ```
 
+Open Scraper.py from *web_scraping_by_image\web_scraping* and edit your paths as following
 
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
+Line 20 – Chrome driver path
 
 ```
-Give an example
+path ='YOUR PATH/chromedriver_win32/chromedriver.exe'
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
+Line 21 – Output folder for storing CSV results
 
 ```
-Give an example
+save_path = 'YOUR PATH/web_scraping_by_image/output'
+```
+
+
+Save and close Scraper.py
+
+Move to gui.py from *web_scraping_by_image\object_detection*
+
+
+Line 14 – edit path to web_scraping folder
+
+```
+sys.path.append("YOUR PATH/web_scraping_by_image/web_scraping")
+```
+
+You are done, the software now should be working.. scrap the web
+
+Open CMD from object_detection folder and run 
+
+```
+Py gui.py
 ```
 
 ## Deployment
