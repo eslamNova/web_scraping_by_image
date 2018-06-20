@@ -23,7 +23,7 @@ First, clone or download ZIP the software
 clone https://github.com/eslamNova/web_scraping_by_image.git
 ```
 
-Open Scraper.py from *web_scraping_by_image\web_scraping* and edit your paths as following
+Open **Scraper.py** from *web_scraping_by_image\web_scraping* and edit your paths as following
 
 Line 20 – Chrome driver path
 
@@ -40,18 +40,18 @@ save_path = 'YOUR PATH/web_scraping_by_image/output'
 
 Save and close Scraper.py
 
-Move to gui.py from *web_scraping_by_image\object_detection*
+Open **gui.py** from *web_scraping_by_image\object_detection*
 
 
-Line 14 – edit path to web_scraping folder
+Line 14 – edit path to *web_scraping* folder
 
 ```
 sys.path.append("YOUR PATH/web_scraping_by_image/web_scraping")
 ```
 
-You are done, the software now should be working.. scrap the web
+You are done, the software now should be working.. 
 
-Open CMD from object_detection folder and run 
+Open CMD from *object_detection* folder and run 
 
 ```
 Py gui.py
@@ -63,9 +63,9 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Anaconda]( https://anaconda.org/) – Jupyter notebook
+* [Sublime-text]( https://www.sublimetext.com/) – Code  
+* [Tensorflow API]( https://github.com/tensorflow/models/tree/master/research/object_detection) – Object detection
 
 ## Contributing
 
