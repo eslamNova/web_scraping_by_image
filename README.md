@@ -11,7 +11,7 @@ Window 10
 
 Python 3.6
 
-You need to have [tensorflow](https://www.tensorflow.org/install/install_windows) and [selenium]( http://selenium-python.readthedocs.io/installation.html) libraries installed on your machine
+You need to have [tensorflow](https://www.tensorflow.org/install/install_windows) and [selenium]( http://selenium-python.readthedocs.io/installation.html) libraries installed and working on your machine
 
 We recommend using [sublime-text]( https://www.sublimetext.com/) for editing code
 
