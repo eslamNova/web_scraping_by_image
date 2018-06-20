@@ -1,4 +1,4 @@
- #Image-based web scraping software
+## Image-based web scraping software
 
 This software system will be web scraper that uses image to search web sites, it will be designed to minimize the time taken to collect information about product category in an online e-commerce platform, it will only need a picture or text of that product (ex: mobile picture), And it will provide an easy to read report that contain links ,prices and names of that product from a list of online market websites, this report can be tremendously useful in market evaluation witch is an important part of visibility study,  it also can be use full for searching and facilitating purchase from most of online e-commerce platforms.
 
@@ -72,7 +72,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Islam Ashraf** - *Initial work* - [PurpleBooth]( https://github.com/eslamNova)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
