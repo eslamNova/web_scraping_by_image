@@ -127,3 +127,6 @@ class scraper(object):
 	def get_files(self):
 		print('getting your files')
 		return file_list
+
+	def close_driver(self):
+		browser.quit()

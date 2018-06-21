@@ -1,4 +1,6 @@
 import sys
+sys.path.append("C:/Users/islam/Desktop/web_scraping_by_image/web_scraping")
+
 import tkinter
 from tkinter import *
 from tkinter.filedialog import askopenfilename
@@ -11,12 +13,13 @@ import os
 
 import model_1 as model
 
-sys.path.append("C:/Users/islam/Desktop/web_scraping_by_image/web_scraping")   
+   
 from Scraper import scraper
 # import commands
 top = None
 image_path = ""
 selected_image = None
+imageholder = None
 def start_gui():
     '''Starting point when module is the main routine.'''
     global val, w, root
@@ -61,27 +64,32 @@ def button_open_command():
     pil_image = Image.open(image_path)
     # get the size of the original image
     width_org, height_org = pil_image.size
-    factor = 1
-    canv_w , canv_h = top.Canvas1.winfo_width(), top.Canvas1.winfo_height()
-    if width_org < height_org:
-        factor = float(canv_w/width_org)
-    else:
-        factor = float(canv_h/height_org)
+    print('image size ',pil_image.size) 
+    if (width_org > 300) and (height_org>300):
+        factor = 1
+        canv_w , canv_h = top.Canvas1.winfo_width(), top.Canvas1.winfo_height()
+        if width_org < height_org:
+            factor = float(canv_w/width_org)
+        else:
+            factor = float(canv_h/height_org)
 
-    width = int(width_org * factor)
-    height = int(height_org * factor)
-    # use one of these filter options to resize the image:
-    # Image.NEAREST     use nearest neighbour
-    # Image.BILINEAR    linear interpolation in a 2x2 environment
-    # Image.BICUBIC     cubic spline interpolation in a 4x4 environment
-    # Image.ANTIALIAS   best down-sizing filter
-    global pil_image2
-    pil_image2 = pil_image.resize((width, height), Image.ANTIALIAS)   
+        width = int(width_org * factor)
+        height = int(height_org * factor)
+        # use one of these filter options to resize the image:
+        # Image.NEAREST     use nearest neighbour
+        # Image.BILINEAR    linear interpolation in a 2x2 environment
+        # Image.BICUBIC     cubic spline interpolation in a 4x4 environment
+        # Image.ANTIALIAS   best down-sizing filter
+        global pil_image2
+        pil_image2 = pil_image.resize((width, height), Image.ANTIALIAS)   
 
-    # convert PIL image object to Tkinter PhotoImage object
-    global tk_image
-    tk_image = ImageTk.PhotoImage(pil_image2)
-    top.Canvas1.create_image(5, 10, image=tk_image,anchor=NW)
+        # convert PIL image object to Tkinter PhotoImage object
+        global tk_image
+        tk_image = ImageTk.PhotoImage(pil_image2)
+        global imageholder
+        imageholder = top.Canvas1.create_image(5, 10, image=tk_image,anchor=NW)
+    else :
+        tkMessageBox.showerror("low image quality", "the image selected is too small \n less than 300 pxl! !\n")
 
     
 
@@ -94,47 +102,67 @@ def button_scrap_command():
             new_image , string_list = model.detect_from_image(pil_image2)
             print(string_list)
             tk_image = ImageTk.PhotoImage(new_image)
-            top.Canvas1.create_image(5, 10, image=tk_image,anchor=NW)
-            top.Canvas1.update()
+            global imageholder
+            top.Canvas1.delete(imageholder)
+            imageholder = top.Canvas1.create_image(5, 10, image=tk_image,anchor=NW)
         except Exception as e:
             tkMessageBox.showerror("no image found", "the file selected not found .. or not a valid image !\n")
             print(e)
 
-        final_items = list()
-        for item in string_list:
-            if item not in final_items:
+        rejected_list = ["person","traffic light","stop sign","parking meter"]
+        final_items = []
+        items = list(set(string_list[i][0] for i in range(len(string_list))))
+        for item in items:
+            if item not in rejected_list:
                 final_items.append(item)
 
-        print(final_items)
-        scrap = scraper()
-        for item in final_items:
-            if(_support.che43.get()):
-                scrap.newEggScrap(item)
-            if(_support.che42.get()):
-                scrap.souqScrap(item)
-            if(_support.che41.get()):
-                scrap.aliExpressScrap(item)
-            final_list = scrap.get_files()
-            print(final_list)
-            for file in final_list:
-                top.Listbox1.insert(END, file)
-        print('DONE')
+        print("final_items: ",final_items)
+        if(len(final_items)==0):
+            tkMessageBox.showerror("cannot detect sellable object", "please make sure your image contains at least a marketable object !\n")
+        else:    
+            if (_support.che43.get() or _support.che42.get() or _support.che41.get()):
+                scrap = scraper()
+                for item in final_items[0:3]:
+                    if(_support.che43.get()):
+                        scrap.newEggScrap(item)
+                    if(_support.che42.get()):
+                        scrap.souqScrap(item)
+                    if(_support.che41.get()):
+                        scrap.aliExpressScrap(item)
+                    final_list = scrap.get_files()
+                    scrap.close_driver()
+                    print(final_list)
+                    top.Listbox1.delete(0, END)
+                    for file in final_list:
+                        top.Listbox1.insert(END, file)
+            else:
+                tkMessageBox.showerror("no website selected", "you should at least select one website !\n")
+
+            print('DONE')
 
     else:            #text
         #start scraping
         scrap = scraper()
-        s = _support.text_string.get().rstrip()
-        if(_support.che43.get()):
-            scrap.newEggScrap(s)
-        if(_support.che42.get()):
-            scrap.souqScrap(s)
-        if(_support.che41.get()):
-            scrap.aliExpressScrap(s)
-        final_list = scrap.get_files()
-        #final_list = ['islam','alien','moon'] #for testing :)
-        print(final_list)
-        for file in final_list:
-            top.Listbox1.insert(END, file)
+        s = _support.text_string.get().strip()
+        if s :
+            if (_support.che43.get() or _support.che42.get() or _support.che41.get()):
+                if(_support.che43.get()):
+                    scrap.newEggScrap(s)
+                if(_support.che42.get()):
+                    scrap.souqScrap(s)
+                if(_support.che41.get()):
+                    scrap.aliExpressScrap(s)
+                final_list = scrap.get_files()
+                scrap.close_driver()
+                print(final_list)
+                top.Listbox1.delete(0, END)
+                for file in final_list:
+                    top.Listbox1.insert(END, file)
+            else:
+                tkMessageBox.showerror("no website selected", "you should at least select one website !\n")
+        else:
+            tkMessageBox.showerror("no text", "you should write text !\n")
+
         print('DONE')
     
 
@@ -210,7 +238,7 @@ class Web_Scraper_Manager(object):
         self.Entry1.configure(selectforeground="black")
         self.Entry1.configure(state="disabled")
         self.Entry1.configure(textvariable = _support.text_string)
-        _support.text_string.set("write...")
+        # _support.text_string.set("write...")
 
         self.Entry2 = Entry(top)
         self.Entry2.place(relx=0.27, rely=0.09,height=31, relwidth=0.61)
