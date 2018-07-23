@@ -25,13 +25,13 @@ clone https://github.com/eslamNova/web_scraping_by_image.git
 
 Open **Scraper.py** from *web_scraping_by_image\web_scraping* and edit your paths as following
 
-Line 20 – Chrome driver path
+Line 20 â€“ Chrome driver path
 
 ```
 path ='YOUR PATH/chromedriver_win32/chromedriver.exe'
 ```
 
-Line 21 – Output folder for storing CSV results
+Line 21 â€“ Output folder for storing CSV results
 
 ```
 save_path = 'YOUR PATH/web_scraping_by_image/output'
@@ -43,7 +43,7 @@ Save and close Scraper.py
 Open **gui.py** from *web_scraping_by_image\object_detection*
 
 
-Line 14 – edit path to *web_scraping* folder
+Line 14 â€“ edit path to *web_scraping* folder
 
 ```
 sys.path.append("YOUR PATH/web_scraping_by_image/web_scraping")
@@ -63,9 +63,9 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Anaconda]( https://anaconda.org/) – Jupyter notebook
-* [Sublime-text]( https://www.sublimetext.com/) – Code  
-* [Tensorflow API]( https://github.com/tensorflow/models/tree/master/research/object_detection) – Object detection
+* [Anaconda]( https://anaconda.org/) â€“ Jupyter notebook
+* [Sublime-text]( https://www.sublimetext.com/) â€“ Code  
+* [Tensorflow API]( https://github.com/tensorflow/models/tree/master/research/object_detection) â€“ Object detection
 
 ## Contributing
 
@@ -78,6 +78,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 ## Authors
 
 * **Islam Ashraf** - *Initial work* - [eslamNova]( https://github.com/eslamNova)
+* **Hussein Muhammad** - *GUI & Scrapping * - [HusseinMuhammad]( https://github.com/Hussein-Muhammad)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
